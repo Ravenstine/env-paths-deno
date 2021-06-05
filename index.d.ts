@@ -5,7 +5,7 @@ declare namespace envPaths {
 
 		Suffix appended to the project name to avoid name conflicts with native apps. Pass an empty string to disable it.
 
-		@default 'nodejs'
+		@default 'deno'
 		*/
 		readonly suffix?: string;
 	}
@@ -14,55 +14,55 @@ declare namespace envPaths {
 		/**
 		Directory for data files.
 
-		Example locations (with the default `nodejs` suffix):
+		Example locations (with the default `deno` suffix):
 
-		- macOS: `~/Library/Application Support/MyApp-nodejs`
-		- Windows: `%LOCALAPPDATA%\MyApp-nodejs\Data` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-nodejs\Data`)
-		- Linux: `~/.local/share/MyApp-nodejs` (or `$XDG_DATA_HOME/MyApp-nodejs`)
+		- macOS: `~/Library/Application Support/MyApp-deno`
+		- Windows: `%LOCALAPPDATA%\MyApp-deno\Data` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-deno\Data`)
+		- Linux: `~/.local/share/MyApp-deno` (or `$XDG_DATA_HOME/MyApp-deno`)
 		*/
 		readonly data: string;
 
 		/**
 		Directory for data files.
 
-		Example locations (with the default `nodejs` suffix):
+		Example locations (with the default `deno` suffix):
 
-		- macOS: `~/Library/Preferences/MyApp-nodejs`
-		- Windows: `%APPDATA%\MyApp-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\MyApp-nodejs\Config`)
-		- Linux: `~/.config/MyApp-nodejs` (or `$XDG_CONFIG_HOME/MyApp-nodejs`)
+		- macOS: `~/Library/Preferences/MyApp-deno`
+		- Windows: `%APPDATA%\MyApp-deno\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\MyApp-deno\Config`)
+		- Linux: `~/.config/MyApp-deno` (or `$XDG_CONFIG_HOME/MyApp-deno`)
 		*/
 		readonly config: string;
 
 		/**
 		Directory for non-essential data files.
 
-		Example locations (with the default `nodejs` suffix):
+		Example locations (with the default `deno` suffix):
 
-		- macOS: `~/Library/Caches/MyApp-nodejs`
-		- Windows: `%LOCALAPPDATA%\MyApp-nodejs\Cache` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-nodejs\Cache`)
-		- Linux: `~/.cache/MyApp-nodejs` (or `$XDG_CACHE_HOME/MyApp-nodejs`)
+		- macOS: `~/Library/Caches/MyApp-deno`
+		- Windows: `%LOCALAPPDATA%\MyApp-deno\Cache` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-deno\Cache`)
+		- Linux: `~/.cache/MyApp-deno` (or `$XDG_CACHE_HOME/MyApp-deno`)
 		*/
 		readonly cache: string;
 
 		/**
 		Directory for log files.
 
-		Example locations (with the default `nodejs` suffix):
+		Example locations (with the default `deno` suffix):
 
-		- macOS: `~/Library/Logs/MyApp-nodejs`
-		- Windows: `%LOCALAPPDATA%\MyApp-nodejs\Log` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-nodejs\Log`)
-		- Linux: `~/.local/state/MyApp-nodejs` (or `$XDG_STATE_HOME/MyApp-nodejs`)
+		- macOS: `~/Library/Logs/MyApp-deno`
+		- Windows: `%LOCALAPPDATA%\MyApp-deno\Log` (for example, `C:\Users\USERNAME\AppData\Local\MyApp-deno\Log`)
+		- Linux: `~/.local/state/MyApp-deno` (or `$XDG_STATE_HOME/MyApp-deno`)
 		*/
 		readonly log: string;
 
 		/**
 		Directory for temporary files.
 
-		Example locations (with the default `nodejs` suffix):
+		Example locations (with the default `deno` suffix):
 
-		- macOS: `/var/folders/jf/f2twvvvs5jl_m49tf034ffpw0000gn/T/MyApp-nodejs`
-		- Windows: `%LOCALAPPDATA%\Temp\MyApp-nodejs` (for example, `C:\Users\USERNAME\AppData\Local\Temp\MyApp-nodejs`)
-		- Linux: `/tmp/USERNAME/MyApp-nodejs`
+		- macOS: `/var/folders/jf/f2twvvvs5jl_m49tf034ffpw0000gn/T/MyApp-deno`
+		- Windows: `%LOCALAPPDATA%\Temp\MyApp-deno` (for example, `C:\Users\USERNAME\AppData\Local\Temp\MyApp-deno`)
+		- Linux: `/tmp/USERNAME/MyApp-deno`
 		*/
 		readonly temp: string;
 	}
@@ -84,10 +84,10 @@ declare const envPaths: {
 	const paths = envPaths('MyApp');
 
 	paths.data;
-	//=> '/home/sindresorhus/.local/share/MyApp-nodejs'
+	//=> '/home/sindresorhus/.local/share/MyApp-deno'
 
 	paths.config
-	//=> '/home/sindresorhus/.config/MyApp-nodejs'
+	//=> '/home/sindresorhus/.config/MyApp-deno'
 	```
 	*/
 	(name: string, options?: envPaths.Options): envPaths.Paths;

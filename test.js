@@ -1,33 +1,35 @@
-import test from 'ava';
-import envPaths from '.';
+import { assert } from "https://deno.land/std@0.97.0/testing/asserts.ts";
+import envPaths from './index.js';
 
-test('default', t => {
+Deno.test('default', function () {
 	const name = 'unicorn';
 	const paths = envPaths(name);
 
 	for (const [key, value] of Object.entries(paths)) {
 		console.log(`  ${key}: ${value}`);
-		t.true(value.endsWith(`${name}-nodejs`));
+		assert(value.endsWith(`${name}-deno`));
 	}
 });
 
-test('custom suffix', t => {
+Deno.test('custom suffix', function () {
 	const name = 'unicorn';
 	const opts = {suffix: 'horn'};
 	const paths = envPaths(name, opts);
-	t.true(paths.data.endsWith(`${name}-${opts.suffix}`));
+	assert(paths.data.endsWith(`${name}-${opts.suffix}`));
 });
 
-test('no suffix', t => {
+Deno.test('no suffix', function () {
 	const name = 'unicorn';
 	const opts = {suffix: false};
 	const paths = envPaths(name, opts);
-	t.true(paths.data.endsWith(name));
+	assert(paths.data.endsWith(name));
 });
 
+const platform = Deno.build.os === "windows" ? "win32" : Deno.build.os;
+
 // Linux-specific tests
-if (process.platform === 'linux') {
-	test('correct paths with XDG_*_HOME set', t => {
+if (platform === 'linux') {
+	Deno.test('correct paths with XDG_*_HOME set', function () {
 		const envVars = {
 			data: 'XDG_DATA_HOME',
 			config: 'XDG_CONFIG_HOME',
@@ -44,7 +46,7 @@ if (process.platform === 'linux') {
 
 		for (const env of Object.keys(envVars)) {
 			const expectedPath = process.env[envVars[env]];
-			t.true(paths[env].startsWith(expectedPath) && paths[env].endsWith(`${name}-nodejs`));
+			assert(paths[env].startsWith(expectedPath) && paths[env].endsWith(`${name}-deno`));
 		}
 	});
 }
